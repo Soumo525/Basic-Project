@@ -70,7 +70,7 @@ let timeInter
 
 function breakNew(){
 
-     timerEl.innerHTML = `05:00`
+     timerEl.innerHTML = `05 : 00`
     clearInterval(interval)
     breakTime = 5;
     document.getElementById('start').addEventListener('click',() => {
@@ -96,7 +96,9 @@ function breakNew(){
     function startNew(){
         timerEl.innerHTML = `25 : 00`
         clearInterval(interval)
+        clearInterval(timeInter)
         timeLeft = 1500
+        console.log("Wrok");
         // const test = document.getElementById("start")
         // .addEventListener('click', () =>{
         //     console.log("hi");
