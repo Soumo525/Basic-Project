@@ -12,24 +12,50 @@
         <h1 class="title">Pomodoro Timer</h1>
       
         <p class="timer" id="timer">25 : 00</p>
+        <div class="embed">
+            <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ?utm_source=generator&theme=0" 
+            width="80%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy"></iframe>
+            
+        </div>
+        
         <div class="button-wrapper">
             <button id="start">Start</button>
             <button id="stop">Stop</button>
             <button id="reset">Reset</button>
 
         </div>
+        
         <button id="wrok">Wrok</button>
         <button id="break">Break</button>
+        <div class="noteOne"> 
+            <h1 >Note</h1>
+            <p class="info-text">Double click on a note to remove it</p>
+        </div>
         <!-- <audio id="myaudio">
             <source src="Asset/ios_17_radial.mp3">
         </audio> -->
     </div>
-    <div class="embed">
-        <iframe style="border-radius:12px" 
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ?utm_source=generator&theme=0" 
-        width="20%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy"></iframe>
+    
+
+
+
+    <!-- Note -->
+
+    
+    
+    <div class="app" id="app">
+     <!--  <textarea  cols="30" rows="10" class="note" placeholder="Empty Note"></textarea> --> 
+        <button class="btn" id="btn">+</button>
     </div>
+
+
+
+
+
+
+
     <script src="index.js"></script>
 </body>
 </html>
