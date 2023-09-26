@@ -78,33 +78,34 @@ let timeInter
 
 
 
-function breakNew(){
-    console.log("Break");
-    timerEl.innerHTML = `05 : 00`
-    clearInterval(interval)
-    breakTime = 10;
-    document.getElementById('start').addEventListener('click',() => {
-        console.log("Break Time");
-        if (breakTime === 0) {
-             alert("Time is Up continue your break");
-             breakTime = 300
-        }else{
-            timeInter = setInterval(() =>{
-                breakTime--;
-                breakUpdateTimer()
-                if (breakTime === 0) {
-                    alert("Time is Up continue your break");
-                    breakTime = 300;
-                }
-            },1000)
-        }
+// function breakNew(){
+//     console.log("Break");
+//     timerEl.innerHTML = `05 : 00`
+//     clearInterval(interval)
+//     breakTime = 10;
+//     document.getElementById('start').addEventListener('click',() => {
+//         console.log("Break Time");
+//         if (breakTime === 0) {
+//              alert("Time is Up continue your break");
+//              breakTime = 300
+//         }else{
+//             timeInter = setInterval(() =>{
+//                 breakTime--;
+//                 breakUpdateTimer()
+//                 if (breakTime === 0) {
+//                     alert("Time is Up continue your break");
+//                     breakTime = 300;
+//                 }
+//             },1000)
+//         }
+    
         
-        
-    })
-}
+//     })
+// }
 
 
     function startNew(){
+        
         console.log("Wrok");
         timerEl.innerHTML = `25 : 00`
         resetTimer()
@@ -128,8 +129,67 @@ function breakNew(){
         // })
     }
 
+//  function reset_Time(){
+//     switch(newFlag)
+//     {
+//         case "break_Time":
+//             timeLeft = 300;
+//             break;
+//         case "wrok_time":
+//             timeLeft = 1500;
+//             break;
+//         default:
+//             timeLeft = 1500;        
+//     }
+//     updateTimer()
+// }
+
+
+
+//     function breakNew(){
+//         timerEl.innerHTML = `05 : 00`
+//         console.log("Break Hit");
+//         newFlag = "break_Time";
+//         clearInterval(interval)
+        
+//         updateTimer()
+
+//     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 wrokEl.addEventListener('click',startNew)
-breakEl.addEventListener('click',breakNew)
+
+
+breakEl.addEventListener('click',()=>{
+    timerEl.innerHTML = `05 : 00`
+    console.log("Break Hit");
+    clearInterval(interval)
+    breakTime = 300;
+    timeInter = setInterval(()=>{
+        breakTime--;
+        breakUpdateTimer()
+        if (breakTime === 0) {
+            alert("Continue Your Wrok")
+            breakTime = 300;
+        }
+    },1000)
+})
 
