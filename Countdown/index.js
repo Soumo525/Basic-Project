@@ -16,11 +16,13 @@ function updateTimer (){
     ${sec.toString().padStart(2,"0")}`
 }
 function startTimer(){
+    clearInterval(timeInter)
+    console.log("Start 1st ");
     interval = setInterval(()=>{
         timeLeft--;
         updateTimer()
         if (timeLeft === 0) {
-            
+            alert("Continue Your Wrok")
             timeLeft = 1500;
         }
     },1000)
@@ -36,6 +38,7 @@ function resetTimer(){
 clearInterval(interval)
 clearInterval(timeInter)
 timeLeft = 1500
+console.log("Reset");
 updateTimer()
 
 }
@@ -47,6 +50,14 @@ resetEl.addEventListener('click', resetTimer)
 
 
 // new 
+
+let sound = ''
+
+function alarm(){
+    sound.onplay()
+}
+
+
 let breakTime = 300;
 
 
@@ -67,22 +78,22 @@ let timeInter
 
 
 
-
 function breakNew(){
-
-     timerEl.innerHTML = `05 : 00`
+    console.log("Break");
+    timerEl.innerHTML = `05 : 00`
     clearInterval(interval)
-    breakTime = 5;
+    breakTime = 10;
     document.getElementById('start').addEventListener('click',() => {
         console.log("Break Time");
         if (breakTime === 0) {
-            breakTime = 300
+             alert("Time is Up continue your break");
+             breakTime = 300
         }else{
             timeInter = setInterval(() =>{
                 breakTime--;
                 breakUpdateTimer()
                 if (breakTime === 0) {
-            
+                    alert("Time is Up continue your break");
                     breakTime = 300;
                 }
             },1000)
@@ -94,11 +105,13 @@ function breakNew(){
 
 
     function startNew(){
-        timerEl.innerHTML = `25 : 00`
-        clearInterval(interval)
-        clearInterval(timeInter)
-        timeLeft = 1500
         console.log("Wrok");
+        timerEl.innerHTML = `25 : 00`
+        resetTimer()
+        // clearInterval(interval)
+        // clearInterval(timeInter)
+        // timeLeft = 1500
+        
         // const test = document.getElementById("start")
         // .addEventListener('click', () =>{
         //     console.log("hi");
