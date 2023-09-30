@@ -7,39 +7,39 @@ const breakEl = document.getElementById("break")
 let interval;
 let timeLeft = 1500; //sec
 
- let  newEl = true;
+let newEl = true;
 
-function updateTimer (){
-    let min = Math.floor(timeLeft/ 60)
-    let sec = timeLeft % 60
-    timerEl.innerHTML = `${min.toString().padStart(2,"0")} : 
-    ${sec.toString().padStart(2,"0")}`
+function updateTimer() {
+  let min = Math.floor(timeLeft / 60)
+  let sec = timeLeft % 60
+  timerEl.innerHTML = `${min.toString().padStart(2, "0")} : 
+    ${sec.toString().padStart(2, "0")}`
 }
-function startTimer(){
-    clearInterval(timeInter)
-    console.log("Start 1st ");
-    interval = setInterval(()=>{
-        timeLeft--;
-        updateTimer()
-        if (timeLeft === 0) {
-            alert("Continue Your Wrok")
-            timeLeft = 1500;
-        }
-    },1000)
-}
-
-function stopTimer(){
-    clearInterval(interval)
-    clearInterval(timeInter)
-    console.log("stop");
+function startTimer() {
+  clearInterval(timeInter)
+  console.log("Start 1st ");
+  interval = setInterval(() => {
+    timeLeft--;
+    updateTimer()
+    if (timeLeft === 0) {
+      alert("Continue Your Wrok")
+      timeLeft = 1500;
+    }
+  }, 1000)
 }
 
-function resetTimer(){
-clearInterval(interval)
-clearInterval(timeInter)
-timeLeft = 1500
-console.log("Reset");
-updateTimer()
+function stopTimer() {
+  clearInterval(interval)
+  clearInterval(timeInter)
+  console.log("stop");
+}
+
+function resetTimer() {
+  clearInterval(interval)
+  clearInterval(timeInter)
+  timeLeft = 1500
+  console.log("Reset");
+  updateTimer()
 
 }
 
@@ -53,8 +53,8 @@ resetEl.addEventListener('click', resetTimer)
 
 let sound = ''
 
-function alarm(){
-    sound.onplay()
+function alarm() {
+  sound.onplay()
 }
 
 
@@ -62,16 +62,16 @@ let breakTime = 300;
 
 
 
-function startNew(){
-    console.log("Click");
+function startNew() {
+  console.log("Click");
 }
 
 
-function breakUpdateTimer(){
-    let mins = Math.floor(breakTime/ 60)
-    let secs = breakTime % 60
-    timerEl.innerHTML = `${mins.toString().padStart(2,"0")} : 
-    ${secs.toString().padStart(2,"0")}`
+function breakUpdateTimer() {
+  let mins = Math.floor(breakTime / 60)
+  let secs = breakTime % 60
+  timerEl.innerHTML = `${mins.toString().padStart(2, "0")} : 
+    ${secs.toString().padStart(2, "0")}`
 }
 
 let timeInter
@@ -98,36 +98,36 @@ let timeInter
 //                 }
 //             },1000)
 //         }
-    
-        
+
+
 //     })
 // }
 
 
-    function startNew(){
-        
-        console.log("Wrok");
-        timerEl.innerHTML = `25 : 00`
-        resetTimer()
-        // clearInterval(interval)
-        // clearInterval(timeInter)
-        // timeLeft = 1500
-        
-        // const test = document.getElementById("start")
-        // .addEventListener('click', () =>{
-        //     console.log("hi");
+function startNew() {
 
-        //     interval = setInterval(()=>{
-        //         timeLeft--;
-        //         updateTimer()
-        //         if (timeLeft === 0) {
-                    
-        //             timeLeft = 1500;
-        //         }
-        //     },1000)
-            
-        // })
-    }
+  console.log("Wrok");
+  timerEl.innerHTML = `25 : 00`
+  resetTimer()
+  // clearInterval(interval)
+  // clearInterval(timeInter)
+  // timeLeft = 1500
+
+  // const test = document.getElementById("start")
+  // .addEventListener('click', () =>{
+  //     console.log("hi");
+
+  //     interval = setInterval(()=>{
+  //         timeLeft--;
+  //         updateTimer()
+  //         if (timeLeft === 0) {
+
+  //             timeLeft = 1500;
+  //         }
+  //     },1000)
+
+  // })
+}
 
 //  function reset_Time(){
 //     switch(newFlag)
@@ -151,7 +151,7 @@ let timeInter
 //         console.log("Break Hit");
 //         newFlag = "break_Time";
 //         clearInterval(interval)
-        
+
 //         updateTimer()
 
 //     }
@@ -175,22 +175,22 @@ let timeInter
 
 
 
-wrokEl.addEventListener('click',startNew)
+wrokEl.addEventListener('click', startNew)
 
 
-breakEl.addEventListener('click',()=>{
-    timerEl.innerHTML = `05 : 00`
-    console.log("Break Hit");
-    clearInterval(interval)
-    breakTime = 300;
-    timeInter = setInterval(()=>{
-        breakTime--;
-        breakUpdateTimer()
-        if (breakTime === 0) {
-            alert("Continue Your Wrok")
-            breakTime = 300;
-        }
-    },1000)
+breakEl.addEventListener('click', () => {
+  timerEl.innerHTML = `05 : 00`
+  console.log("Break Hit");
+  clearInterval(interval)
+  breakTime = 300;
+  timeInter = setInterval(() => {
+    breakTime--;
+    breakUpdateTimer()
+    if (breakTime === 0) {
+      alert("Continue Your Wrok")
+      breakTime = 300;
+    }
+  }, 1000)
 })
 
 
@@ -213,7 +213,7 @@ getNotes().forEach((note) => {
 function createNoteEl(id, content) {
   const element = document.createElement("textarea");
   element.classList.add("note");
-  element.placeholder = "Empty Note"; 
+  element.placeholder = "Empty Note";
   element.value = content;
 
   element.addEventListener("dblclick", () => {
@@ -231,9 +231,9 @@ function createNoteEl(id, content) {
 }
 
 function deleteNote(id, element) {
-    const notes = getNotes().filter((note)=>note.id != id)
-    saveNote(notes)
-    appEl.removeChild(element)
+  const notes = getNotes().filter((note) => note.id != id)
+  saveNote(notes)
+  appEl.removeChild(element)
 }
 
 function updateNote(id, content) {
@@ -266,3 +266,55 @@ function getNotes() {
 }
 
 btnEl.addEventListener("click", addNote);
+
+
+
+// Todo
+
+const inputBox = document.getElementById("input")
+const listBox = document.getElementById("list")
+const btnE = document.getElementById("btnNew")
+
+
+function addTodo() {
+  console.log("Ok");
+  if (inputBox.value === '') {
+    alert("Do something")
+  }
+  else {
+    let li = document.createElement("li")
+    li.innerHTML = inputBox.value
+    listBox.appendChild(li)
+    let span = document.createElement("span")
+    span.innerHTML = "\u00d7"
+    li.appendChild(span)
+  }
+  inputBox.value = "";
+  saveTodo()
+
+}
+
+
+btnE.addEventListener('click', addTodo);
+
+
+listBox.addEventListener('click', function (e) {
+  if (e.target.tagName === "LI") {
+    e.target.classList.toggle("check")
+    saveTodo();
+  }
+  else if (e.target.tagName === "SPAN") {
+    e.target.parentElement.remove();
+    saveTodo();
+  }
+}, false)
+
+
+function saveTodo() {
+  localStorage.setItem("data", listBox.innerHTML)
+}
+
+function showTodo() {
+  listBox.innerHTML = localStorage.getItem("data")
+}
+showTodo()
