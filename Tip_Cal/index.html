@@ -68,7 +68,7 @@
   <script>
 
     document.querySelector('#tip-form').onchange = function(){
-        var bill = document.getElementById('billTotal').value;
+        var bill = Number( document.getElementById('billTotal').value);  //Check if the value is of type number before calling toFixed()
         console.log(bill);
         var tip = document.getElementById('tipInput').value
         console.log(tip);
@@ -86,34 +86,13 @@
         // finalAmount.value = totalBill.toFixed(2)
         var tipAmountTotal = document.querySelector('#totalBillWithTip');
         console.log(tipAmountTotal);
-        document.getElementById('totalBillWithTip').innerText = `${totalBill.toFixed(2)}`
-        document.getElementById('results').style.display='block'
+        tipAmountTotal.value = totalBill.toFixed(2)
+        // document.getElementById('totalBillWithTip').innerText = `${totalBill.toFixed(2)}`
+        // document.getElementById('results').style.display='block'
 
        
     }
 
-
-
-
-    
-// document.querySelector('#tip-form').onchange = function(){
-
-// var bill = Number(document.getElementById('billTotal').value);
-// var tip = document.getElementById('tipInput').value;
-// document.getElementById('tipOutput').innerHTML = `${tip}%`;
-// var tipValue = bill * (tip/100)
-// var finalBill = bill + tipValue
-// console.log(finalBill)
-// var tipAmount = document.querySelector('#tipAmount')
-// var totalBillWithTip = document.querySelector('#totalBillWithTip')
-
-// tipAmount.value = tipValue.toFixed(2);
-// totalBillWithTip.value =finalBill.toFixed(2);
-
-// //Show Results
-
-// document.getElementById('results').style.display='block'
-// }
 
   </script>
 </html>
