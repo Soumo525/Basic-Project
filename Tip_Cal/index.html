@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Tip Calculator</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  </head>
+  <body class="bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card card-body text-center mt-5">
+            <h1 class="heading display-5 pb-3">Tip Calculator</h1>
+            <form id="tip-form">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="number" class="form-control" id="billTotal" placeholder="Total Bill">
+                </div>
+              </div>
+              <div class="form-group tipPersent">
+                <div class="input-group">
+                  <label for="">Tip:</label>
+
+
+                  <input type="range" class="form-control" id="tipInput" value="0">
+                  <span class="input-group-addon" id="tipOutput"></span>
+                </div>
+              </div>
+
+
+
+            </form>
+            <hr>
+
+            <!-- RESULTS -->
+            <div id="results" class="pt-4">
+              <h5>Results</h5>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Tip amount</span>
+                  <input type="number" class="form-control" id="tipAmount" disabled>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Total Bill with Tip</span>
+                  <input type="number" class="form-control" id="totalBillWithTip" disabled>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+  </body>
+
+  <script>
+
+    document.querySelector('#tip-form').onchange = function(){
+        var bill = document.getElementById('billTotal').value;
+        console.log(bill);
+        var tip = document.getElementById('tipInput').value
+        console.log(tip);
+        document.getElementById('tipOutput').innerHTML = `${tip}%`
+        var tipvalue = bill * (tip/100 )
+        console.log(tipvalue);
+        var totalBill = bill + tipvalue;
+        console.log(totalBill);
+
+        var tipAmount = document.querySelector('#tipAmount');
+        tipAmount.value = tipvalue.toFixed(2);
+        
+        // var finalAmount = document.querySelector('#totalBillWithTip')
+        // console.log(finalAmount);
+        // finalAmount.value = totalBill.toFixed(2)
+        var tipAmountTotal = document.querySelector('#totalBillWithTip');
+        console.log(tipAmountTotal);
+        document.getElementById('totalBillWithTip').innerText = `${totalBill.toFixed(2)}`
+        document.getElementById('results').style.display='block'
+
+       
+    }
+
+
+
+
+    
+// document.querySelector('#tip-form').onchange = function(){
+
+// var bill = Number(document.getElementById('billTotal').value);
+// var tip = document.getElementById('tipInput').value;
+// document.getElementById('tipOutput').innerHTML = `${tip}%`;
+// var tipValue = bill * (tip/100)
+// var finalBill = bill + tipValue
+// console.log(finalBill)
+// var tipAmount = document.querySelector('#tipAmount')
+// var totalBillWithTip = document.querySelector('#totalBillWithTip')
+
+// tipAmount.value = tipValue.toFixed(2);
+// totalBillWithTip.value =finalBill.toFixed(2);
+
+// //Show Results
+
+// document.getElementById('results').style.display='block'
+// }
+
+  </script>
+</html>
