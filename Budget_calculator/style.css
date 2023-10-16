@@ -198,7 +198,7 @@ ul li {
     height: 28px;
     width: 28px;
     border-radius: 50%;
-    /* background-image: url(Ass/unchecked.png); */
+    background-image: url(Ass/unchecked.png);
     background-size: cover;
     background-position: center;
     left: 0;
@@ -212,9 +212,9 @@ ul li {
     text-decoration: line-through;
   }
   
-  /* ul li.check::before {
+  ul li.check::before {
     background-image: url(Ass/checked.png);
-  } */
+  }
   
   
   ul li span {

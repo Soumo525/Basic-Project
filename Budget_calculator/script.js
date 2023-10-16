@@ -11,6 +11,28 @@ const expBtn = document.getElementById('check-amount');
 let calExp = document.getElementById('expenditure-value') 
 const balanceAmount = document.getElementById('balance-amount')
 
+// show Saving 
+
+const saving = document.getElementById('savingAmount');
+
+
+function savingChange(){
+    saving.innerHTML = balanceAmount.innerText
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let tempValue = 0;
 
 setbudget.addEventListener('click',() => {
@@ -26,10 +48,12 @@ setbudget.addEventListener('click',() => {
     {
         showBudget.innerHTML = tempValue;
         balanceAmount.innerText = tempValue - parseInt(calExp.innerText);
+        savingChange();
     }
     budget.value ="";
 
 })
+
 
 
 //calculation
@@ -57,6 +81,7 @@ function balanceChange(){
         balanceAmount.style.color = "#ff0000";
     }
     
+
 }
 
 
@@ -66,7 +91,7 @@ function balanceChange(){
 const listBox = document.getElementById("listul")
 function expensesList(){
     let li = document.createElement("li")
-    li.innerHTML =` ${(expItem.value)} &emsp; &emsp;&emsp; ===> &emsp;&emsp;&emsp;${(expPrice.value)}`
+    li.innerHTML =` ${(expItem.value)} &emsp; &emsp; ===> &emsp;&emsp;${(expPrice.value)}`
     listBox.appendChild(li)
     console.log(expItem.value);
     console.log(li);
