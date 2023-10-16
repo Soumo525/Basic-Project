@@ -66,14 +66,31 @@ function balanceChange(){
 const listBox = document.getElementById("listul")
 function expensesList(){
     let li = document.createElement("li")
-    li.innerHTML = expItem.value
+    li.innerHTML =` ${(expItem.value)} &emsp; &emsp;&emsp; ===> &emsp;&emsp;&emsp;${(expPrice.value)}`
     listBox.appendChild(li)
+    console.log(expItem.value);
+    console.log(li);
     let span = document.createElement("span")
-    span.innerHTML = "\u00d7"
+    span.innerHTML = '\u00d7'//'<i class="fa-solid fa-trash"></i>' // edit and delete 
     li.appendChild(span)
 }
 
 
+/// Delete list
+
+listBox.addEventListener('click', function (e) {
+    console.log("pk");
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("check")
+        
+      }
+      else if (e.target.tagName === "SPAN") {
+        console.log("Nooo");
+        e.target.parentElement.remove();
+        
+      }
+  
+  }, false)
 
 
 // Show Exp
@@ -98,10 +115,11 @@ expBtn.addEventListener('click', () => {
     calExp.innerText = tempExValue + parseInt(calExp.innerText);
     console.log(tempExValue);
     console.log(calExp);
-    expItem.value = "";
-    expPrice.value = "";
+    
     balanceChange();
     expensesList();
+    expItem.value = "";
+    expPrice.value = "";
    }
 
 })
