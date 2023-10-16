@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <input type="text" id="expItem" placeholder="Enter expense">
+    <button onclick="expensesList()">Add Expense</button>
+    
+    <ul id="listBox">
+        <!-- Expenses will be added here dynamically -->
+    </ul>
+
+    <script>
+        // Your JavaScript code here
+        function expensesList() {
+            let expItem = document.getElementById("expItem");
+            let listBox = document.getElementById("listBox");
+
+            if (expItem && expItem.value.trim() !== "") {
+                let li = document.createElement("li");
+                li.innerHTML = expItem.value;
+                
+                listBox.appendChild(li);
+
+                let span = document.createElement("span");
+                span.innerHTML = "\u00d7";
+                li.appendChild(span);
+
+                expItem.value = "";
+            } else {
+                console.error("Invalid or empty expense item.");
+            }
+        }
+    </script>
+</body>
+</html>

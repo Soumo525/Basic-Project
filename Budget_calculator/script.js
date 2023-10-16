@@ -39,6 +39,43 @@ function calculation(){
 }
 
 
+// Balance Calculate
+
+function balanceChange(){
+    if(balanceAmount.innerHTML > 0){
+        console.log("Positive");
+        balanceAmount.innerText = parseInt(showBudget.innerText) - parseInt(calExp.innerText)
+        if(balanceAmount.innerHTML < 0 ){
+            console.log("Negative");
+            balanceAmount.style.color = "#ff0000";
+            console.log(balanceAmount.innerHTML);
+        }
+    }
+    else if (balanceAmount.innerHTML < 0){
+        console.log("negative");
+        balanceAmount.innerText = parseInt(showBudget.innerText) - parseInt(calExp.innerText)
+        balanceAmount.style.color = "#ff0000";
+    }
+    
+}
+
+
+
+
+// Show Expense List 
+const listBox = document.getElementById("listul")
+function expensesList(){
+    let li = document.createElement("li")
+    li.innerHTML = expItem.value
+    listBox.appendChild(li)
+    let span = document.createElement("span")
+    span.innerHTML = "\u00d7"
+    li.appendChild(span)
+}
+
+
+
+
 // Show Exp
 let tempExValue = 0;
 expBtn.addEventListener('click', () => {
@@ -63,6 +100,8 @@ expBtn.addEventListener('click', () => {
     console.log(calExp);
     expItem.value = "";
     expPrice.value = "";
+    balanceChange();
+    expensesList();
    }
 
 })
@@ -70,7 +109,6 @@ expBtn.addEventListener('click', () => {
  
 
 //Total expense (existing + new)
-
 
 
 
