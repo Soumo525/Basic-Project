@@ -8,7 +8,7 @@ const expBtn = document.getElementById('check-amount');
 
 // Show Expenses
 
-let calExp = document.getElementById('expenditure-value') 
+let calExp = document.getElementById('expenditure-value')
 const balanceAmount = document.getElementById('balance-amount')
 
 // show Saving 
@@ -16,8 +16,15 @@ const balanceAmount = document.getElementById('balance-amount')
 const saving = document.getElementById('savingAmount');
 
 
-function savingChange(){
-    saving.innerHTML = balanceAmount.innerText
+function savingChange() {
+    if (balanceAmount.innerText >= 0) {
+        saving.innerText = balanceAmount.innerText
+        saving.style.color = "#000000";
+    }
+    else {
+        saving.innerText = balanceAmount.innerText;
+        saving.style.color = "#ff0000";
+    }
 }
 
 
@@ -35,22 +42,21 @@ function savingChange(){
 
 let tempValue = 0;
 
-setbudget.addEventListener('click',() => {
+setbudget.addEventListener('click', () => {
     // console.log(budget.value);
     // showBudget.innerHTML = budget.value;
     // console.log("Work");
     tempValue = budget.value;
-    if(budget.value === '')
-    {
+    if (budget.value === '') {
         alert("Not Ok")
     }
-    else
-    {
+    else {
         showBudget.innerHTML = tempValue;
         balanceAmount.innerText = tempValue - parseInt(calExp.innerText);
         savingChange();
+        //savingLocalStorage();
     }
-    budget.value ="";
+    budget.value = "";
 
 })
 
@@ -58,29 +64,32 @@ setbudget.addEventListener('click',() => {
 
 //calculation
 
-function calculation(){
+function calculation() {
 
 }
 
 
 // Balance Calculate
 
-function balanceChange(){
-    if(balanceAmount.innerHTML > 0){
+function balanceChange() {
+    if (balanceAmount.innerHTML >= 0) {
         console.log("Positive");
         balanceAmount.innerText = parseInt(showBudget.innerText) - parseInt(calExp.innerText)
-        if(balanceAmount.innerHTML < 0 ){
+        savingChange()
+        if (balanceAmount.innerHTML < 0) {
             console.log("Negative");
             balanceAmount.style.color = "#ff0000";
             console.log(balanceAmount.innerHTML);
+            savingChange()
         }
     }
-    else if (balanceAmount.innerHTML < 0){
+    else if (balanceAmount.innerHTML < 0) {
         console.log("negative");
         balanceAmount.innerText = parseInt(showBudget.innerText) - parseInt(calExp.innerText)
         balanceAmount.style.color = "#ff0000";
+        savingChange()
     }
-    
+
 
 }
 
@@ -89,15 +98,16 @@ function balanceChange(){
 
 // Show Expense List 
 const listBox = document.getElementById("listul")
-function expensesList(){
+function expensesList() {
     let li = document.createElement("li")
-    li.innerHTML =` ${(expItem.value)} &emsp; &emsp; ===> &emsp;&emsp;${(expPrice.value)}`
+    li.innerHTML = ` ${(expItem.value)} &emsp; &emsp; ===> &emsp;&emsp;${(expPrice.value)}`
     listBox.appendChild(li)
     console.log(expItem.value);
     console.log(li);
     let span = document.createElement("span")
     span.innerHTML = '\u00d7'//'<i class="fa-solid fa-trash"></i>' // edit and delete 
     li.appendChild(span)
+    savingLocalStorage()
 }
 
 
@@ -107,15 +117,17 @@ listBox.addEventListener('click', function (e) {
     console.log("pk");
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("check")
-        
-      }
-      else if (e.target.tagName === "SPAN") {
+        savingLocalStorage()
+
+    }
+    else if (e.target.tagName === "SPAN") {
         console.log("Nooo");
         e.target.parentElement.remove();
-        
-      }
-  
-  }, false)
+        savingLocalStorage()
+
+    }
+
+}, false)
 
 
 // Show Exp
@@ -125,34 +137,46 @@ expBtn.addEventListener('click', () => {
     console.log(tempExValue);
     // let total = tempExValue - expPrice.innerHTML;
     // console.log(total);
-    if(expItem.value  === '') {
-      
+    if (expItem.value === '') {
+
         alert("Enter the Product Name ")
-       
+
     }
 
-    else if(expPrice.value === '')
-    {
+    else if (expPrice.value === '') {
         alert("Enter the Product cost ")
     }
 
-   else {
-    calExp.innerText = tempExValue + parseInt(calExp.innerText);
-    console.log(tempExValue);
-    console.log(calExp);
-    
-    balanceChange();
-    expensesList();
-    expItem.value = "";
-    expPrice.value = "";
-   }
+    else {
+        calExp.innerText = tempExValue + parseInt(calExp.innerText);
+        console.log(tempExValue);
+        console.log(calExp);
+
+        balanceChange();
+        expensesList();
+        expItem.value = "";
+        expPrice.value = "";
+    }
 
 })
 
- 
+
 
 //Total expense (existing + new)
 
 
 
 
+// Saving Item 
+
+function savingLocalStorage(){
+    localStorage.setItem("data", listBox.innerHTML)
+    //localStorage.setItem("tBudget",showBudget.innerHTML)
+}
+
+function showLocalStorage(){
+    listBox.innerHTML = localStorage.getItem("data")
+    //showBudget.innerHTML = localStorage.getItem("tBudget")
+}
+
+showLocalStorage()
