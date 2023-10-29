@@ -101,6 +101,21 @@ body {
   cursor: pointer;
 }
 
+.reset{
+  
+    
+    margin-top: 5em;
+    margin-left: 1em;
+    background-color: #587ef4;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    padding: 0.6em 1.2em;
+    border-radius: 0.3em;
+    cursor: pointer;
+  
+}
+
 .list {
   background-color: #ffffff;
   padding: 1.8em 1.2em;
@@ -178,12 +193,14 @@ body {
 /* todo */
 
 ul li {
+  word-spacing: 30px;
   list-style: none;
   font-size: 17px;
   padding: 12px 8px 12px 50px;
   user-select: none;
   cursor: pointer;
   position: relative;
+  
 }
 
 ul li::before {
@@ -197,6 +214,7 @@ ul li::before {
   background-position: center;
   left: 0;
   bottom: 8.5px;
+ 
 }
 
 ul li.check {

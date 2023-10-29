@@ -16,6 +16,11 @@ const balanceAmount = document.getElementById('balance-amount')
 const saving = document.getElementById('savingAmount');
 
 
+// Reset 
+
+const reset = document.getElementById('resetAll');
+
+
 function savingChange() {
     if (balanceAmount.innerText >= 0) {
         saving.innerText = balanceAmount.innerText
@@ -100,7 +105,7 @@ function balanceChange() {
 const listBox = document.getElementById("listul")
 function expensesList() {
     let li = document.createElement("li")
-    li.innerHTML = ` ${(expItem.value)} &emsp; &emsp; ===> &emsp;&emsp;${(expPrice.value)}`
+    li.innerHTML = ` ${(expItem.value)}  ===>  ${(expPrice.value)}`
     listBox.appendChild(li)
     console.log(expItem.value);
     console.log(li);
@@ -180,3 +185,9 @@ function showLocalStorage(){
 }
 
 showLocalStorage()
+
+
+reset.addEventListener('click',() => {
+console.log("click");
+localStorage.clear()
+})
