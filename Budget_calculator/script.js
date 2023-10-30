@@ -112,7 +112,7 @@ function expensesList() {
     let span = document.createElement("span")
     span.innerHTML = '\u00d7'//'<i class="fa-solid fa-trash"></i>' // edit and delete 
     li.appendChild(span)
-    savingLocalStorage()
+    //savingLocalStorage()
 }
 
 
@@ -122,13 +122,13 @@ listBox.addEventListener('click', function (e) {
     console.log("pk");
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("check")
-        savingLocalStorage()
+        //savingLocalStorage()
 
     }
     else if (e.target.tagName === "SPAN") {
         console.log("Nooo");
         e.target.parentElement.remove();
-        savingLocalStorage()
+        //savingLocalStorage()
 
     }
 
@@ -189,5 +189,6 @@ showLocalStorage()
 
 reset.addEventListener('click',() => {
 console.log("click");
-localStorage.clear()
+location.reload()
+
 })
