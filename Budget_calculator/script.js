@@ -59,7 +59,7 @@ setbudget.addEventListener('click', () => {
         showBudget.innerHTML = tempValue;
         balanceAmount.innerText = tempValue - parseInt(calExp.innerText);
         savingChange();
-        //savingLocalStorage();
+        savingLocalStorage();
     }
     budget.value = "";
 
@@ -112,7 +112,7 @@ function expensesList() {
     let span = document.createElement("span")
     span.innerHTML = '\u00d7'//'<i class="fa-solid fa-trash"></i>' // edit and delete 
     li.appendChild(span)
-    //savingLocalStorage()
+    savingLocalStorage()
 }
 
 
@@ -122,13 +122,13 @@ listBox.addEventListener('click', function (e) {
     console.log("pk");
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("check")
-        //savingLocalStorage()
+        savingLocalStorage()
 
     }
     else if (e.target.tagName === "SPAN") {
         console.log("Nooo");
         e.target.parentElement.remove();
-        //savingLocalStorage()
+        savingLocalStorage()
 
     }
 
@@ -174,21 +174,24 @@ expBtn.addEventListener('click', () => {
 
 // Saving Item 
 
-function savingLocalStorage(){
+function savingLocalStorage() {
     localStorage.setItem("data", listBox.innerHTML)
     //localStorage.setItem("tBudget",showBudget.innerHTML)
+    localStorage.setItem("total_b",showBudget.innerHTML)
 }
 
-function showLocalStorage(){
+function showLocalStorage() {
     listBox.innerHTML = localStorage.getItem("data")
     //showBudget.innerHTML = localStorage.getItem("tBudget")
+    //showBudget.innerHTML = localStorage.getItem("total_b") // problem 0
 }
 
 showLocalStorage()
 
 
-reset.addEventListener('click',() => {
-console.log("click");
-location.reload()
+reset.addEventListener('click', () => {
+    console.log("click");
+    localStorage.clear()
+    location.reload()
 
 })
