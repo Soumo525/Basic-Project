@@ -2,6 +2,7 @@ body {
     background-color: rgb(122, 122, 122);
 }
 
+
 .grid{
     width: 606px;
     height: 606px;
@@ -15,9 +16,11 @@ body {
     width: 200px;
     border: solid 1px;
     border-color: rgb(255, 255, 255);
+    
+}
+.mole {
+    /* background-color: blue; */
+    background-image: url(/1.png);
+    
 }
 
-.mole {
-    background-color: blue;
-    /* background-image: url(/image.png); */
-}
